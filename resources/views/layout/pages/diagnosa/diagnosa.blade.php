@@ -27,7 +27,7 @@
     
 <div class="card">
     <div class="card-header">
-    <h4>Data Semua Obat</h4>
+    <h4>Data Semua Diagnosa</h4>
     </div>
     <div class="card-header">
       
@@ -50,7 +50,7 @@
               <form action="{{ route('diagnosa.destroy', $d) }}" method="post" class="d-inline">
                 @csrf
                 @method('delete')
-                  <button type="submit" class="btn btn-danger btn-action b-0" data-toggle="tooltip" title="Hapus"><i class="fas fa-trash"></i></button>
+                  <button type="submit" class="btn btn-danger btn-action b-0" data-toggle="tooltip" title="Hapus" onclick=" return confirm('apakah anda yakin hapus!!')"><i class="fas fa-trash"></i></button>
               </form>
             </td>
           </tr>

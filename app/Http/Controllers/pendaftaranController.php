@@ -132,4 +132,32 @@ class pendaftaranController extends Controller
     {
         dd($data);
     }
+
+    public function dataPemeriksaan(Request $request)
+    {
+        $cek = pemeriksaanModel::get();
+        
+        if (in_array($request->dari_tgl, $request->all())) {
+            $dari_tgl = $request->dari_tgl;
+            $ke_tgl = $request->ke_tgl;
+            foreach ($cek as $c) {
+                $isi = $c;
+                $cari = $isi->whereBetween('tanggal',[$dari_tgl,$ke_tgl])->get();
+            }
+            
+            $data = $cari;
+            session()->put('dari_tgl', $request->dari_tgl);
+            session()->put('ke_tgl', $request->ke_tgl);
+        
+        }else{
+
+            $data = pemeriksaanModel::all();
+            session()->forget('dari_tgl');
+            session()->forget('ke_tgl');
+        }
+        return view('layout/pages/pemeriksaan/datasPemeriksaan',[
+            'data' => $data,
+            'cek' => false,
+        ]);
+    }
 }

@@ -56,6 +56,7 @@
     </div>
   </div>
 </div>
+@include('sweetalert::alert')
 <script>
   document.getElementById('dashboard').classList.add('active');
 </script>

@@ -81,7 +81,6 @@ class PemeriksaanController extends Controller
             'terapi' => $request->terapi,
             'id' => $request->id,
         ];
-
         pemeriksaanModel::create($data);
 
         $pendaftaran = pemeriksaanModel::orderBy('id_pemeriksaan','desc')->first();

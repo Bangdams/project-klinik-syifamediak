@@ -55,7 +55,7 @@
                   </div>
                 </form>
             <div class="simple-footer">
-              Klinik Syifa Medika
+              Klinik Syifa
             </div>
           </div>
         </div>

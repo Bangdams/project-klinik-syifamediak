@@ -14,8 +14,16 @@ class usersController extends Controller
 {
     public function index()
     {
+
+        $user = [
+            'apoteker',
+            'dokter',
+        ];
+
+        $data = usersModel::whereIn('level', $user)->get();
+
         return view('layout.pages.dataUsers',[
-            'data' => usersModel::simplePaginate(5),
+            'data' => $data,
             'cek' => false,
         ]);
     }
@@ -116,7 +124,7 @@ class usersController extends Controller
                 'cek' => false,
             ]);
         }*/
-
+        
         return view('layout.pages.dashboard',[
             'jml_dokter' => usersModel::where('level', 'dokter')->count(),
             'jml_pasien' => pasienModel::all()->count(),

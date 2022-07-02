@@ -49,11 +49,6 @@
 	    <div class="form-group">
 	      <div class="control-label">Hak Akses</div>
 	      <div class="custom-switches-stacked mt-2">
-	        <label class="custom-switch" required>
-	          <input type="radio" name="level" value="admin" class="custom-switch-input admin">
-	          <span class="custom-switch-indicator"></span>
-	          <span class="custom-switch-description">Admin</span>
-	        </label>
 	        <label class="custom-switch">
 	          <input type="radio" name="level" value="dokter" class="custom-switch-input dokter">
 	          <span class="custom-switch-indicator"></span>

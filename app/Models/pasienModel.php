@@ -16,7 +16,7 @@ class pasienModel extends Model
 
     public function pemeriksaanModel()
     {
-        return $this->hasMany(pemeriksaanModel::class, 'id');
+        return $this->hasMany(pemeriksaanModel::class, 'id_pasien','id');
     }
 
     public function rmModel()

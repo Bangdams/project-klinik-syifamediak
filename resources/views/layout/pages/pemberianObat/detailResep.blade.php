@@ -38,6 +38,9 @@
                 <th>Nama Obat</th>
                 <th>Satuan</th>
                 <th>Jumlah</th>
+                <th>Harga Obat</th>
+                <th>Total Harga Obat</th>
+                <th>Harga Pemeriksaan</th>
               </tr>
               @foreach ($data as $d)
               <input type="hidden" value="{{ $d->id_pemeriksaan }}" name="id_pemeriksaan">
@@ -45,10 +48,16 @@
                 <td>{{ $d->obatModel->nama_obat }}</td>
                 <td>{{ $d->satuan }}</td>
                 <td>{{ $d->jumlah }}</td>
+                <td>Rp.{{ number_format($d->obatModel->harga) }}</td>
+                <td>Rp.{{ number_format($d->obatModel->harga * $d->jumlah) }}</td>
+                <td>Rp.{{ number_format($d->pemeriksaanModel->harga) }}</td>
               </tr>
               @endforeach
-              <tr>
+              <tr class="mt-2">
                 <th>Total</th>
+                <th></th>
+                <th></th>
+                <th></th>
                 <th></th>
                 <th>Rp.{{ number_format($total) }}</th>
               </tr>

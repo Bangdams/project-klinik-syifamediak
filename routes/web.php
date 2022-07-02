@@ -11,6 +11,7 @@ use App\Http\Controllers\ResepObatController;
 use App\Http\Controllers\RekamMedisController;
 use App\Http\Controllers\RekapObatsController;
 use App\Http\Controllers\DiagnosaController;
+use App\Http\Controllers\CetakController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -53,12 +54,16 @@ Route::group(['middleware' => ['auth', 'logincek:admin']], function() {
         'diagnosa' => DiagnosaController::class,
     ]);
     
-    //Route Cetak Obat
+    //Route Cetak
     Route::get('cetakObatHarian', [rekapobatController::class, 'cetak']);
     Route::get('cetakObat', [RekapObatsController::class, 'cetak']);
+    Route::get('cetak-riwayat-pemeriksaan', [CetakController::class, 'cetak_riwayat_pemeriksaan']);
+    Route::get('cetak_riwayat_pemeriksaan_tanggal', [CetakController::class, 'cetak_riwayat_pemeriksaan_tanggal']);
 
     //Route Riwayat Pemeriksaan
     Route::get('riwayatPemeriksaan', [pendaftaranController::class, 'riwayatPemeriksaan']);
+    Route::get('dataPemeriksaan', [pendaftaranController::class, 'dataPemeriksaan']);
+    Route::get('tanggalPemeriksaan', [pendaftaranController::class, 'tanggalPemeriksaan']);
     
     //Route Detail Resep
     //Route::get('/detailResep/{no_pemeriksaan}', [RekamMedisController::class, 'detailResep']);
@@ -95,10 +100,15 @@ Route::group(['middleware' => ['auth', 'logincek:dokter']], function() {
     Route::resources([
         'pemeriksaan' => PemeriksaanController::class,
         'resep' => ResepController::class,
+        'rekamMedis' => RekamMedisController::class,
     ]);
+
+    Route::get('detail-rm-pasien/{data}', [RekamMedisController::class, 'detail']);
+    Route::get('delete-resep/{data}', [ResepController::class, 'hapus']);
 
     //detail Obat
     Route::post('detailobat/tambah', [ResepController::class, 'simpan']);
+    Route::post('cari', [RekamMedisController::class, 'cari']);
     /*
     Route::post('/cari/pasien', [datapasienController::class, 'cari']);
     Route::post('/cari/obat', [obatController::class, 'cari']);
@@ -107,6 +117,9 @@ Route::group(['middleware' => ['auth', 'logincek:dokter']], function() {
 
     //tampilan form pemeriksaan
     Route::get('/pemeriksaan/pasien/{pasien:nama_pasien}', [PemeriksaanController::class, 'pemeriksaan']);
+
+    //cari
+    Route::get('/cari', [RekamMedisController::class, 'cari']);
 });
 
 //Apoteker

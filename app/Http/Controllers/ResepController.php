@@ -113,4 +113,10 @@ class ResepController extends Controller
         return redirect('/resep')->with('toast_success','Data Berhasil Tersimpan!!');
     }
 
+    public function hapus($data)
+    {  
+        $hapus = resepModel::where('no_resep', $data)->first()->delete();
+        return redirect('/resep');
+    }
+
 }

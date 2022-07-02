@@ -130,9 +130,8 @@
               </li>
               
               <li class="nav-item dropdown" id="resep">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-ellipsis-h"></i> <span>Rekam Medis</span></a>
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-ellipsis-h"></i> <span>Pemeriksaan Harian</span></a>
                 <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="{{ route('rekamMedis.index') }}">Rekam Medis</a></li>
                   <li><a class="nav-link" href="{{ url('riwayatPemeriksaan') }}">Pemeriksaan Harian</a></li>
                 </ul>
               </li>
@@ -141,7 +140,7 @@
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-ellipsis-h"></i> <span>Laporan</span></a>
                 <ul class="dropdown-menu">
                   <li><a href="{{ route('rekapObats.index') }}">Rekap Obat</a></li>
-                  {{-- <li><a class="nav-link" href="{{ route('rekamMedis.index') }}">Laporan</a></li> --}}
+                  <li><a class="nav-link" href="{{ url('dataPemeriksaan') }}">Laporan Pemeriksaan</a></li>
                 </ul>
               </li>
               @endif
@@ -161,7 +160,8 @@
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-ellipsis-h"></i> <span>Pemeriksaan</span></a>
                 <ul class="dropdown-menu">
                   <li><a href="{{ route('pemeriksaan.index') }}">Daftar Pasien</a></li>
-                  <li><a class="nav-link" href="utilities-invoice.html">Invoice</a></li>
+                  <li><a href="{{ route('rekamMedis.index') }}">Rekam Medis</a></li>
+                  {{-- <li><a class="nav-link" href="utilities-invoice.html">Invoice</a></li> --}}
                 </ul>
               </li>
               @endif
@@ -173,6 +173,7 @@
                   <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>
                   <ul class="dropdown-menu">
                     <li><a class="nav-link" href="{{ url('dashboard') }}">Menu Utama</a></li>
+                    <li><a href="{{ route('obat.index') }}">Obat</a></li>
                     <li><a href="{{ route('resepObat.index') }}">Resep</a></li>
                     <li><a class="nav-link" href="{{ route('rekapObats.index') }}">Rekap Obat</a></li>
                   </ul>

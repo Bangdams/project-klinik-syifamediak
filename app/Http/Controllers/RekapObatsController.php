@@ -48,6 +48,8 @@ class RekapObatsController extends Controller
         }else{
 
             $obat = resepModel::all();
+            session()->forget('dari_tgl');
+            session()->forget('ke_tgl');
         }
 
          return view('layout.pages.rekap.rekapobat',[
@@ -58,9 +60,36 @@ class RekapObatsController extends Controller
 
     public function cetak()
     {
+        $cek = pemeriksaanModel::get();
+        
+        if (session('dari_tgl') == true) {
+
+            $dari_tgl = session('dari_tgl');
+            $ke_tgl = session('ke_tgl');
+            foreach ($cek as $c) {
+                $isi = $c;
+                $cari = $isi->whereBetween('tanggal',[$dari_tgl,$ke_tgl])->get('id_pemeriksaan');
+            }
+
+            $o = array();
+            foreach ($cari as $k => $value) {
+                array_push($o, $value->id_pemeriksaan);
+            }
+
+            $p = $cari->count();
+            if ($p == 1) {
+                $obat = resepModel::where('id_pemeriksaan',$o)->get();
+            }else{
+                $obat = resepModel::find($o);
+            }
+
+        }else{
+
+            $obat = resepModel::all();
+        }
 
         return view('layout.pages.cetak.cetakObat',[
-            'data' => resepModel::all()
+            'data' => $obat
         ]);
     }
 }

@@ -29,19 +29,15 @@
   </div>
   <div class="card-body">
     <div class="table-responsive">
-      {{-- <form method="get" action="/cari" class="float-right mb-3">
-        <input type="text" name="cari" class=".form-control-sm">
-        <input type="submit" class="btn btn-primary" value="cari">
-      </form> --}}
       <table class="table table-striped" id="table-1">
         <thead>
           <tr>
             <th>
               #
             </th>
-            <th>Nama Pasien</th>
-            <th>No Ktp</th>
-            <th>No Bpjs</th>
+            <th>No Pemeriksaan</th>
+            <th>Tanggal</th>
+            <th>Keluhan</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -49,14 +45,21 @@
           @foreach ($data as $b)
           <tr>
             <td>{{ $loop->iteration }}</td>
-            <td>{{ $b->nama_pasien }}</td>
-            <td>{{ $b->no_ktp }}</td>
-            <td>{{ $b->no_bpjs }}</td>
-            <td><a href="{{ url('detail-rm-pasien', $b->nama_pasien) }}" class="btn btn-success">Detail</a></td>
+            <td>{{ $b->no_pemeriksaan }}</td>
+            <td>{{ $b->tanggal }}</td>
+            <td>{{ $b->keluhan }}</td>
+            <td><a class="btn btn-primary detail-rm" style="color: white;" data-toggle="modal" data-target="#cek"
+                data-nomer="{{ $b->no_pemeriksaan }}"
+                data-nama="{{ $b->nama }}"
+                data-keluhan="{{ $b->keluhan }}"
+                data-diagnosa="{{ $b->diagnosaModel->nama_diagnosa }}"
+                data-terapi="{{ $b->terapi }}"
+                data-tanggal="{{ $b->tanggal }}">Detail</a></td>
           </tr>
           @endforeach
         </tbody>
       </table>
+      <a href="/rekamMedis" class="btn btn-secondary m-2">Kembali</a>
     </div>
   </div>
 </div>
@@ -82,6 +85,6 @@
   });
 </script>
 <script>
-  document.getElementById('resep').classList.add('active');
+  document.getElementById('pemeriksaan').classList.add('active');
 </script>
 @endsection

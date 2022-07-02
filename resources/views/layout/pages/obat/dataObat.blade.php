@@ -57,7 +57,7 @@
                 <form action="{{ route('obat.destroy', $b) }}" method="post" class="d-inline">
                   @csrf
                   @method('delete')
-                    <button type="submit" class="btn btn-danger btn-action b-0" data-toggle="tooltip" title="Hapus"><i class="fas fa-trash"></i></button>
+                    <button type="submit" class="btn btn-danger btn-action b-0" onclick=" return confirm('apakah anda yakin hapus!!')" data-toggle="tooltip" title="Hapus"><i class="fas fa-trash"></i></button>
                 </form>
             </td>
           </tr>

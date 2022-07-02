@@ -86,6 +86,7 @@
           <div class="form-group col-md-4">
             <label>Jumlah</label>
             <input type="number" name="jumlah" class="form-control jumlah" value="{{ $d->jumlah }}" readonly>
+            <a href="{{ url('delete-resep', $d->no_resep) }}" class="btn btn-danger float-right mt-2">X</a>
           </div>
         </div>
         @endforeach

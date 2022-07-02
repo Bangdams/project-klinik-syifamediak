@@ -96,7 +96,7 @@
       </div>
       
       <div class="form-group">
-        <label>Harga</label>
+        <label>Biaya</label>
         <input type="text" name="harga" class="form-control" required="" placeholder="Isi Harga">
       </div>
       

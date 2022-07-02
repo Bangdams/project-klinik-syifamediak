@@ -61,7 +61,7 @@
 			            <form action="{{ route('dataUsers.destroy', $dataUsers) }}" method="post" class="d-inline">
 			            	@csrf
 			            	@method('delete')
-			            		<button type="submit" class="btn btn-danger btn-action b-0" data-toggle="tooltip" title="Hapus"><i class="fas fa-trash"></i></button>
+			            		<button type="submit" class="btn btn-danger btn-action b-0" data-toggle="tooltip" title="Hapus" onclick=" return confirm('apakah anda yakin hapus!!')"><i class="fas fa-trash"></i></button>
 			            </form>	            
 			          </td>
 			        </tr>
@@ -70,11 +70,6 @@
 	    </table>
 	  </div>
 	</div>
-	 <div class="card-footer text-right">
-	    <nav class="d-inline-block">
-	      {{ $data->links() }}
-	    </nav>
-	  </div>
 </div>
 
 @include('sweetalert::alert')

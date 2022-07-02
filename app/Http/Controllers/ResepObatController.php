@@ -40,11 +40,19 @@ class ResepObatController extends Controller
         ]);
     }
 
-
+    public function show($data)
+    {
+        $resep = resepModel::where('id_pemeriksaan', $data)->get();
+        return view('layout/pages/resep/detailResep',[
+            'resep' => $resep,
+            'total' => $resep->sum('sub_total'),
+            'cek' => false,
+        ]);
+    }
 
     public function update(Request $request)
     {
         resepModel::where('id_pemeriksaan', $request->id_pemeriksaan)->update(['status' => 'sudah bayar']);
-        return redirect('/dashboard')->with('toast_success','Data Berhasil Diedit!!');
+        return redirect('/dashboard')->with('toast_success','Pasien Sudah Bayar');
     }
 }

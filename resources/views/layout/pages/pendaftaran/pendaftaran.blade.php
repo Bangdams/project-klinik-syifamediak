@@ -61,14 +61,14 @@
       </div>
       <div class="form-group">
         <label>No KTP</label>
-        <input type="text" name="no_ktp" class="form-control" placeholder="Masukan Nomer KTP" value="{{ old('no_ktp') }}" required="">
+        <input type="number" name="no_ktp" class="form-control" placeholder="Masukan Nomer KTP" value="{{ old('no_ktp') }}" required="">
          @error('no_ktp')
           <p style="color:red;">- {{ $message }}</p>
         @enderror
       </div>
       <div class="form-group">
         <label>No BPJS</label>
-        <input type="text" name="no_bpjs" value="{{ old('no_bpjs') }}" placeholder="Masukan Nomer BPJS" class="form-control">
+        <input type="number" name="no_bpjs" value="{{ old('no_bpjs') }}" placeholder="Masukan Nomer BPJS" class="form-control">
          @error('no_bpjs')
           <p style="color:red;">- {{ $message }}</p>
         @enderror
@@ -131,7 +131,7 @@
           <tr>
             <th>#</th>
             <th>Nama</th>
-            <th>Umur</th>
+            <th>Tanggal Lahir</th>
             <th>Alamat</th>
             <th>Nomer Hp</th>
             <th>Jenis Kelamin</th>
@@ -146,7 +146,11 @@
             <td>{{ $datapasien->tgl_lahir }}</td>
             <td>{{ $datapasien->alamat }}</td>
             <td>{{ $datapasien->no_telepon }}</td>
-            <td>{{ $datapasien->jk }}</td>
+            @if ($datapasien->jk == 'L')
+            <td>Laki-Laki</td>
+            @else
+            <td>Perempuan</td>
+            @endif
             <td>{{ $datapasien->no_ktp }}</td>
             <td>{{ $datapasien->no_bpjs  }}</td>
             <td> 
